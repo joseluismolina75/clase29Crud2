@@ -10,6 +10,7 @@ const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 const controller = {
 	// Root - Show all products
 	index: (req, res) => {
+		const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
 		res.render('products.ejs',{products})
 	},
 
@@ -52,7 +53,17 @@ const controller = {
 	},
 	// Update - Method to update
 	update: (req, res) => {
-		// Do the magic
+		const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
+		const pToEdit = products.find(product => product.id = req.params.id)
+		pToEdit.name = req.body.name || pToEdit.name
+		pToEdit.price = req.body.price || pToEdit.price
+		pToEdit.discount = req.body.discount || pToEdit.discount
+		pToEdit.category = req.body.category || pToEdit.category
+		pToEdit.description = req.body.description || pToEdit.description
+		pToEdit.image = req.body.image || pToEdit.image
+
+		fs.writeFileSync(productsFilePath, JSON.stringify(products, null, ' '))
+		res.redirect('/products') 
 	},
 
 	// Delete - Delete one product from DB
