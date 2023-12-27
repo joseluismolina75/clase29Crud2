@@ -34,7 +34,6 @@ const controller = {
 			id: uuidv4 (),				//id único uuid
 			image: 'default-image.png',	//imagen por defecto
 			...req.body					//usamos propagación o spread operator
-
 		}
 		console.log(newProduct);
 		//agrego nuevo producto al listado
@@ -48,6 +47,7 @@ const controller = {
 	// Update - Form to edit
 	edit: (req, res) => {
 		console.log(req.params.id)
+		const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
 		const pToEdit = products.find(product => product.id == req.params.id)
 		res.render('product-edit-form.ejs', {pToEdit})
 	},
