@@ -39,7 +39,7 @@ const controller = {
 		//agrego nuevo producto al listado
 		products.push(newProduct);	//push()añade uno o más elementos al final de un array y devuelve la nueva longitud del array.
 		//Convertir a JSON y escribir en la BD JSON
-		fs.writeFileSync(productsFilePath, JSON.stringify(products, null, ' '))
+		fs.writeFileSync(productsFilePath, JSON.stringify(products, null, ' '));
 		//redireccionamos al listado de productos
 		res.redirect('/products');
 	},
@@ -47,14 +47,13 @@ const controller = {
 	// Update - Form to edit
 	edit: (req, res) => {
 		console.log(req.params.id)
-		const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
 		const pToEdit = products.find(product => product.id == req.params.id)
-		res.render('product-edit-form.ejs', {pToEdit})
+		res.render('product-edit-form.ejs', { pToEdit })
 	},
 	// Update - Method to update
 	update: (req, res) => {
 		const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
-		const pToEdit = products.find(product => product.id = req.params.id)
+		const pToEdit = products.find(product => product.id == req.params.id)
 		pToEdit.name = req.body.name || pToEdit.name
 		pToEdit.price = req.body.price || pToEdit.price
 		pToEdit.discount = req.body.discount || pToEdit.discount
