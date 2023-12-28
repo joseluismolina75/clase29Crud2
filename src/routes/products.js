@@ -12,7 +12,7 @@ router.get('/', productsController.index);
 router.get('/detail/:id', productsController.detail); 
 
 /*** CREATE ONE PRODUCT http://localhost:3000/products/create ***/ 
-router.get('/create/', productsController.create); 
+router.get('/create', productsController.create); 
 router.post('/create', productsController.store); 
 
 /*** EDIT ONE PRODUCT http://localhost:3000/products/edit/1 ***/ 

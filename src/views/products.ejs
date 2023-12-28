@@ -1,15 +1,7 @@
 «
 <!DOCTYPE html>
-«
-<!DOCTYPE html>
 <html lang="es">
 <!-- Include Head -->
-<%- include('partials/head', {title: 'Todos los productos' }) %>
-
-	<body>
-		<!-- Header -->
-		<%- include('partials/headerNavbar') %>
-			<!-- /Header -->
 <%- include('partials/head', {title: 'Todos los productos' }) %>
 
 	<body>
@@ -23,7 +15,6 @@
 					<div class="col-12">
 						<h2 class="products-title">Todos los productos</h2>
 					</div>
-
 					<div class="col-12 col-sm-6 col-lg-3">
 						<% products.forEach(product=> { %>
 							<section class="product-box">
@@ -45,11 +36,6 @@
 				</div>
 			</div>
 			<!-- /todos los productos -->
-
-			<!-- footer -->
-			<%- include('partials/footer') %>
-				<!-- /footer -->
-	</body>
 
 			<!-- footer -->
 			<%- include('partials/footer') %>
