@@ -16,8 +16,14 @@ const controller = {
 		res.render('index.ejs', {inDiscount, visited})
 	},
 	search: (req, res) => {
-		// Do the magic
+		let searchProducts = products.filter(product => product.name == req.query.keywords);
+		res.send(searchProducts);
 	},
+	search2: (req, res) => {
+		palabra = (req.query.keywords).toLowerCase();
+		const pFound = products.some(product => product.name.toLowerCase().includes(palabra));
+		const pToSearch = products.filter(product => product.name.toLowerCase().includes(palabra));
+		res.send(searchProducts);
 };
 
 module.exports = controller;

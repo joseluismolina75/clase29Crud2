@@ -70,7 +70,7 @@ const controller = {
 		const id = req.params.id
 		let newProducts = products.filter(product => product.id != id)
 		fs.writeFileSync(productsFilePath, JSON.stringify(newProducts, null, ' '))
-		res.redirect('/products/')
+		res.redirect('/products')
 	}
 };
 
