@@ -15,15 +15,21 @@ const controller = {
 		console.log(visited.length);
 		res.render('index.ejs', {inDiscount, visited})
 	},
-	search: (req, res) => {
+	searchx: (req, res) => {
 		let searchProducts = products.filter(product => product.name == req.query.keywords);
 		res.send(searchProducts);
 	},
-	search2: (req, res) => {
-		palabra = (req.query.keywords).toLowerCase();
+	search: (req, res) => {
+		const palabra = (req.query.keywords).toLowerCase();
 		const pFound = products.some(product => product.name.toLowerCase().includes(palabra));
 		const pToSearch = products.filter(product => product.name.toLowerCase().includes(palabra));
-		res.send(searchProducts);
+		//res.render('result.ejs', { pToSearch, palabra, pFound });
+		res.json({
+			palabra: palabra,
+			pFound,
+			pToSearch
+		})
+	}
 };
 
 module.exports = controller;
